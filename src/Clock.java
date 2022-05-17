@@ -9,7 +9,7 @@ public class Clock {
         time = new Time(hour, min);
     }
 
-    public void getTime() {
+    public void showTime() {
         time.showTime();
     }
 

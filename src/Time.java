@@ -35,4 +35,15 @@ public class Time {
         }
         return false;
     }
+
+    public void tick() {
+        for(int i = 0; i < 60; i++) {
+            if (min < 59) {
+                this.min++;
+            } else {
+                this.hour++;
+                this.min = 0;
+            }
+        }
+    }
 }
