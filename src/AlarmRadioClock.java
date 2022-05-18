@@ -7,8 +7,12 @@ public class AlarmRadioClock {
         radio = new Radio();
     }
 
-    public void getTime() {
+    public void showTime() {
         alarmClock.showTime();
+    }
+
+    public Time getTime() {
+        return alarmClock.getTime();
     }
 
     public void setTime(Time t) {
@@ -45,5 +49,9 @@ public class AlarmRadioClock {
 
     public void snooze() {
         alarmClock.snooze(2);
+    }
+
+    public void checkAlarm() {
+        alarmClock.checkAlarm();
     }
 }

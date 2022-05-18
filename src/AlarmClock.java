@@ -35,10 +35,13 @@ public class AlarmClock extends Clock {
     public void snooze(int min) {
         for (int i = 0; i < min; i++) {
             time.tick();
-            if (time.equals(alarmTime)) {
-                alarmSound();
-            }
+            checkAlarm();
         }
+    }
 
+    public void checkAlarm() {
+        if (time.equals(alarmTime)) {
+            alarmSound();
+        }
     }
 }
