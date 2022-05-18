@@ -13,6 +13,10 @@ public class Clock {
         time.showTime();
     }
 
+    public Time getTime() {
+        return time;
+    }
+
     public void setTime(Time t) {
         time.setTime(t);
     }
