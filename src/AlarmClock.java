@@ -38,7 +38,7 @@ public class AlarmClock extends Clock {
             alarmSound();
         }
     }
-    
+
     public void snooze(int min) {
         for (int i = 0; i < min; i++) {
             time.tick();
