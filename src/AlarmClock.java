@@ -2,14 +2,15 @@ public class AlarmClock extends Clock {
     Time alarmTime;
     boolean turnOn;
 
-    public AlarmClock() {
-        alarmTime = new Time(8,5);
+    public AlarmClock(int hour, int min, int sec) {
+        alarmTime = new Time(hour, min, sec);
         turnOn = false;
     }
 
     public void setAlarmTime(Time t) {
         alarmTime.hour = t.hour;
         alarmTime.min = t.min;
+        alarmTime.sec = t.sec;
     }
 
     public void turnOn() {
@@ -32,6 +33,12 @@ public class AlarmClock extends Clock {
         System.out.println("buzzlightyear");
     }
 
+    public void checkAlarm() {
+        if (time.equals(alarmTime)) {
+            alarmSound();
+        }
+    }
+    
     public void snooze(int min) {
         for (int i = 0; i < min; i++) {
             time.tick();
@@ -39,9 +46,4 @@ public class AlarmClock extends Clock {
         }
     }
 
-    public void checkAlarm() {
-        if (time.equals(alarmTime)) {
-            alarmSound();
-        }
-    }
 }
