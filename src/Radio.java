@@ -1,8 +1,8 @@
 public class Radio {
     String station;
 
-    public Radio() {
-        station = "1060 AM";
+    public Radio(String radioStation) {
+        station = radioStation;
     }
 
     public String getStation() {
