@@ -1,12 +1,8 @@
 public class Clock {
     Time time;
 
-    public Clock() {
-        time = new Time(8,0);
-    }
-
-    public Clock(int hour, int min) {
-        time = new Time(hour, min);
+    public Clock(int hour, int min, int sec) {
+        time = new Time(hour, min, sec);
     }
 
     public void showTime() {
