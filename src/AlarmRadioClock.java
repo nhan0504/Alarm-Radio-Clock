@@ -2,9 +2,9 @@ public class AlarmRadioClock {
     AlarmClock alarmClock;
     Radio radio;
 
-    public AlarmRadioClock() {
-        alarmClock = new AlarmClock();
-        radio = new Radio();
+    public AlarmRadioClock(int hour, int min, int sec, String radioStation) {
+        alarmClock = new AlarmClock(hour, min, sec);
+        radio = new Radio(radioStation);
     }
 
     public void showTime() {
