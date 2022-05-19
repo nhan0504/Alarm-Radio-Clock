@@ -3,6 +3,7 @@ public class AlarmClock extends Clock {
     boolean turnOn;
 
     public AlarmClock(int hour, int min, int sec) {
+        super(hour, min, sec);
         alarmTime = new Time(hour, min, sec);
         turnOn = false;
     }
