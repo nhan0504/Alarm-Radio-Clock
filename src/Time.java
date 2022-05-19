@@ -1,36 +1,78 @@
 public class Time {
-    int hour;
-    int min;
-    int sec;
+    private int hour;
+    private int min;
+    private int sec;
 
-    public Time() {
-        this.hour = 8;
-        this.min = 0;
-        this.sec = 0;
+    public void setHour(int hour) {
+        this.hour = hour;
     }
 
-    public Time(int hour, int min, int sec) {
-        this.hour = hour;
+    public void setMin(int min) {
         this.min = min;
+    }
+
+    public void setSec(int sec) {
         this.sec = sec;
     }
 
+    public int getHour() {
+        return hour;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public int getSec() {
+        return sec;
+    }
+
+    public Time(int hour, int min, int sec) {
+        setHour(hour);
+        setMin(min);
+        setSec(sec);
+    }
+
     public void showTime() {
-        if (min < 10) {
-            System.out.println(hour + ":0" + min);
+        if (hour < 12) {
+            System.out.print(hour);
+            if (min < 10) {
+                System.out.print(":0" + min + " ");
+            } else {
+                System.out.print(":" + min + " ");
+            }
+            System.out.println("AM");
+        } else if (hour > 12) {
+            System.out.print(hour - 12);
+            if (min < 10) {
+                System.out.print(":0" + min + " ");
+            } else {
+                System.out.print(":" + min + " ");
+            }
+            if (hour == 24) {
+                System.out.println("AM");
+            } else {
+                System.out.println("PM");
+            }
         } else {
-            System.out.println(hour + ":" + min);
+            System.out.print(hour);
+            if (min < 10) {
+                System.out.print(":0" + min + " ");
+            } else {
+                System.out.print(":" + min + " ");
+            }
+            System.out.println("AM");
         }
     }
 
     public void setTime(Time t) {
-        this.hour = t.hour;
-        this.min = t.min;
-        this.sec = t.sec;
+        this.hour = t.getHour();
+        this.min = t.getMin();
+        this.sec = t.getSec();
     }
 
     public boolean equals(Time t) {
-        if (t.hour == this.hour && t.min == this.min && t.sec == this.sec) {
+        if (t.getHour() == this.hour && t.getMin() == this.min && t.getSec() == this.sec) {
             return true;
         }
         return false;
@@ -39,19 +81,19 @@ public class Time {
     public void tick() {
         for(int i = 0; i < 60; i++) {
             if (sec < 59) {
-                this.sec++;
+                setSec(sec + 1);
             } else {
-                this.sec = 0;
-                if (hour == 24) {
-                    this.hour = 0;
-                    this.min = 0;
-                    this.sec = 1;
-                }
+                setSec(0);
                 if (min < 59) {
-                    this.min++;
+                    setMin(min + 1);
                 } else {
-                    this.hour++;
-                    this.min = 0;
+                    setHour(hour + 1);
+                    setMin(0);
+                    if (hour > 24) {
+                        setHour(1);
+                        setMin(0);
+                        setSec(0);
+                    }
                 }
             }
         }
