@@ -42,11 +42,16 @@ public class Time {
                 this.sec++;
             } else {
                 this.sec = 0;
+                if (hour == 24) {
+                    this.hour = 0;
+                    this.min = 0;
+                    this.sec = 1;
+                }
                 if (min < 59) {
                     this.min++;
                 } else {
-                    this.min = 0;
                     this.hour++;
+                    this.min = 0;
                 }
             }
         }
