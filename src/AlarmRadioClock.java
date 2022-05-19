@@ -35,11 +35,11 @@ public class AlarmRadioClock {
         alarmClock.setAlarmTime(hour, min, sec, amPm);
     }
 
-    public void turnAlarmOn() {
+    public void turnOn() {
         alarmClock.turnOn();
     }
 
-    public void turnAlarmOff() {
+    public void turnOff() {
         alarmClock.turnOff();
     }
 
@@ -51,7 +51,19 @@ public class AlarmRadioClock {
         alarmClock.snooze();
     }
 
+    public void alarmSound() {
+        System.out.println("The radio is playing " + getStation());
+    }
+
     public boolean checkAlarm() {
-        return alarmClock.checkAlarm();
+        if (alarmClock.getTime().equals(alarmClock.getAlarmTime())) {
+            alarmSound();
+            return true;
+        }
+        return false;
+    }
+
+    public void tick() {
+        alarmClock.getTime().tick();
     }
 }
