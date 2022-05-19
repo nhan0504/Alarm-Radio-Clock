@@ -2,8 +2,8 @@ public class AlarmRadioClock {
     AlarmClock alarmClock;
     Radio radio;
 
-    public AlarmRadioClock(int hour, int min, int sec, String radioStation) {
-        alarmClock = new AlarmClock(hour, min, sec);
+    public AlarmRadioClock(int hour, int min, int sec, String amPm, String radioStation) {
+        alarmClock = new AlarmClock(hour, min, sec, amPm);
         radio = new Radio(radioStation);
     }
 
@@ -31,8 +31,8 @@ public class AlarmRadioClock {
         return alarmClock.getAlarmTime();
     }
 
-    public void setAlarm(Time t) {
-        alarmClock.setAlarmTime(t);
+    public void setAlarm(int hour, int min, int sec, String amPm) {
+        alarmClock.setAlarmTime(hour, min, sec, amPm);
     }
 
     public void turnAlarmOn() {
@@ -48,10 +48,10 @@ public class AlarmRadioClock {
     }
 
     public void snooze() {
-        alarmClock.snooze(2);
+        alarmClock.snooze();
     }
 
-    public void checkAlarm() {
-        alarmClock.checkAlarm();
+    public boolean checkAlarm() {
+        return alarmClock.checkAlarm();
     }
 }
