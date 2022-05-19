@@ -1,17 +1,24 @@
 public class AlarmClock extends Clock {
-    Time alarmTime;
-    boolean turnOn;
+    private Time alarmTime;
+    private boolean turnOn;
 
-    public AlarmClock(int hour, int min, int sec) {
-        super(hour, min, sec);
-        alarmTime = new Time(hour, min, sec);
+    public AlarmClock(int hour, int min, int sec, String amPm) {
+        super(hour, min, sec, amPm);
+        if (amPm.equals("AM")) {
+            alarmTime = new Time(hour, min, sec);
+        } else {
+            alarmTime = new Time(hour + 12, min, sec);
+        }
         turnOn = false;
     }
 
-    public void setAlarmTime(Time t) {
-        alarmTime.hour = t.hour;
-        alarmTime.min = t.min;
-        alarmTime.sec = t.sec;
+    public void setAlarmTime(int hour, int min, int sec, String amPm) {
+        alarmTime.setHour(hour);
+        alarmTime.setMin(min);
+        alarmTime.setSec(sec);
+        if (amPm.equals("PM")) {
+            alarmTime.setHour(alarmTime.getHour() + 12);
+        }
     }
 
     public void turnOn() {
@@ -34,17 +41,21 @@ public class AlarmClock extends Clock {
         System.out.println("buzzlightyear");
     }
 
-    public void checkAlarm() {
+    public boolean checkAlarm() {
         if (time.equals(alarmTime)) {
             alarmSound();
+            return true;
         }
+        return false;
     }
 
-    public void snooze(int min) {
-        for (int i = 0; i < min; i++) {
+    public void snooze() {
+        System.out.println("Snooze was pressed");
+        for (int i = 0; i < 9; i++) {
             time.tick();
-            checkAlarm();
+            showTime();
         }
+        alarmSound();
     }
 
 }
