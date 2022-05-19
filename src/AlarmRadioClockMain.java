@@ -3,16 +3,22 @@ import java.util.Scanner;
 public class AlarmRadioClockMain {
     public static void main(String[] args) {
         System.out.println("New alarm radio clock");
-        AlarmRadioClock clock = new AlarmRadioClock();
-        System.out.println("Do you want to set an alarm? Type yes or no: ");
-        Scanner sc = new Scanner(System.in);
-        String answer = sc.next();
-        if (answer.equals("yes")) {
-            clock.turnAlarmOn();
-            while (true) {
-                clock.checkAlarm();
 
+        AlarmClock alarmClock = new AlarmClock(8,0,0, "AM");
+        alarmClock.setAlarmTime(8, 5, 0, "AM");
+        alarmClock.turnOn();
+        for (int i = 0; i < 5; i++) {
+            alarmClock.tick();
+            alarmClock.showTime();
+            if (alarmClock.isAlarmOn()) {
+                if (alarmClock.checkAlarm()) {
+                    alarmClock.snooze();
+                }
             }
         }
+        alarmClock.snooze();
+        alarmClock.getAlarmTime().showTime();
+        alarmClock.turnOff();
+        System.out.println("Alarm was shut off");
     }
 }
