@@ -1,6 +1,6 @@
 public class AlarmRadioClock {
-    AlarmClock alarmClock;
-    Radio radio;
+    private AlarmClock alarmClock;
+    private Radio radio;
 
     public AlarmRadioClock(int hour, int min, int sec, String amPm, String radioStation) {
         alarmClock = new AlarmClock(hour, min, sec, amPm);
